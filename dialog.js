@@ -11,9 +11,6 @@ function saveAndSend() {
         props.set("attachmentCategoryValue", category);
 
         props.saveAsync(function() {
-            // FIXED: item.sendAsync() does not exist.
-            // Instead, message back to the parent (events.js) which holds the event reference.
-            // The parent will then call event.completed({ allowEvent: true }) to proceed with send.
             Office.context.ui.messageParent("categorized");
         });
     });

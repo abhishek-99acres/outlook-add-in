@@ -6,29 +6,26 @@
   xsi:type="MailApp">
 
   <Id>f7898640-cb2e-4b9e-84e5-55c36048c74d</Id>
-  <Version>1.0.0.1</Version>
+  <Version>1.0.0.2</Version>
   <ProviderName>Test Company</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Attachment Categorizer"/>
   <Description DefaultValue="Forces attachment labeling before sending."/>
 
-  <!-- IconUrl is REQUIRED — replace with your hosted 32x32 PNG -->
-  <IconUrl DefaultValue="https://YOUR-HOSTED-DOMAIN/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://YOUR-HOSTED-DOMAIN/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://YOUR-HOSTED-DOMAIN/support"/>
+  <IconUrl DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://abhishek-99acres.github.io/outlook-add-in"/>
 
   <Hosts>
     <Host Name="Mailbox"/>
   </Hosts>
 
-  <!-- DefaultSettings with SourceLocation is REQUIRED for MailApp -->
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://YOUR-HOSTED-DOMAIN/taskpane.html"/>
+    <SourceLocation DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/functions.html"/>
   </DefaultSettings>
 
   <Requirements>
     <Sets>
-      <!-- Lowered from 1.12 to 1.11 for broader compatibility -->
       <Set Name="Mailbox" MinVersion="1.11"/>
     </Sets>
   </Requirements>
@@ -42,7 +39,6 @@
           <LaunchEvents>
             <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler"/>
           </LaunchEvents>
-          <!-- Must point to an HTML file that loads your events.js script -->
           <SourceLocation resid="residFunctionsUrl"/>
         </ExtensionPoint>
       </Host>
@@ -50,8 +46,7 @@
 
     <Resources>
       <bt:Urls>
-        <!-- FIXED: was pointing to wrong path "/labeling/functions.html" -->
-        <bt:Url id="residFunctionsUrl" DefaultValue="https://YOUR-HOSTED-DOMAIN/functions.html"/>
+        <bt:Url id="residFunctionsUrl" DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/functions.html"/>
       </bt:Urls>
     </Resources>
   </VersionOverrides>
