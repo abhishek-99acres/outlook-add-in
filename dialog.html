@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="dialog.js"></script>
+    <style>
+        body { font-family: Segoe UI, sans-serif; padding: 20px; }
+        button { margin-right: 8px; padding: 6px 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h3>Categorize Attachments</h3>
+
+    <label>
+        Category:
+        <select id="category">
+            <option value="Public">Public</option>
+            <option value="Internal">Internal</option>
+            <option value="Confidential">Confidential</option>
+        </select>
+    </label>
+
+    <br><br>
+    <button onclick="saveAndSend()">Save &amp; Send</button>
+    <button onclick="cancel()">Cancel</button>
+</body>
+</html>
