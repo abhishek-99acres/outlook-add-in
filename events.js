@@ -1,4 +1,6 @@
-Office.onReady(() => {});
+// FIX 4: Office.actions.associate is REQUIRED to map the manifest function
+// name to the actual JS handler. Without this the event never fires.
+Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
 
 let globalEvent = null;
 let dialogRef = null;
@@ -38,7 +40,6 @@ function onMessageSendHandler(event) {
 
                     dialogRef.addEventHandler(Office.EventType.DialogMessageReceived, function(arg) {
                         dialogRef.close();
-
                         if (arg.message === "categorized") {
                             globalEvent.completed({ allowEvent: true });
                         } else {
