@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp
   xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -41,6 +41,69 @@
           </LaunchEvents>
           <SourceLocation resid="residFunctionsUrl"/>
         </ExtensionPoint>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Urls>
+        <bt:Url id="residFunctionsUrl" DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/functions.html"/>
+      </bt:Urls>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp> -->
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xsi:type="MailApp">
+
+  <Id>f7898640-cb2e-4b9e-84e5-55c36048c74d</Id>
+  <Version>1.0.0.3</Version>
+  <ProviderName>Test Company</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Attachment Categorizer"/>
+  <Description DefaultValue="Forces attachment labeling before sending."/>
+
+  <IconUrl DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://abhishek-99acres.github.io/outlook-add-in"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://abhishek-99acres.github.io/outlook-add-in/functions.html"/>
+  </DefaultSettings>
+
+  <Requirements>
+    <Sets>
+      <!-- OnMessageSend requires minimum 1.12 -->
+      <Set Name="Mailbox" MinVersion="1.12"/>
+    </Sets>
+  </Requirements>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <!-- REQUIRED for event-based activation — was missing before -->
+        <Runtimes>
+          <Runtime resid="residFunctionsUrl" lifetime="short" type="javascript"/>
+        </Runtimes>
+
+        <ExtensionPoint xsi:type="LaunchEvent">
+          <LaunchEvents>
+            <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler"/>
+          </LaunchEvents>
+          <SourceLocation resid="residFunctionsUrl"/>
+        </ExtensionPoint>
+
       </Host>
     </Hosts>
 
